@@ -67,11 +67,11 @@ module Enumerable
 	def my_inject(*arg)
 	  if block_given?
 	    memo = self[0]
-	    self.my_each_with_index do |x, iteration|
-	      if iteration == 0
-	        next if x == memo
+	    self.my_each_with_index do |elem, i|
+	      if i == 0
+	        next if elem == memo
 	      else
-	        memo = yield(memo, x)
+	        memo = yield(memo, elem)
 	      end
 	    end
 	  elsif arg.length == 1
@@ -96,6 +96,8 @@ module Enumerable
 	  memo
 	end
 
+	#example:
+	print [1,2,3,4,5].inject(:*)
 end
 
 def multiply_els(arg) 
